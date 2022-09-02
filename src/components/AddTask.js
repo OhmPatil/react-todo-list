@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { database } from "./firebase";
+import { database } from "../firebase";
 import { collection, addDoc, query, Timestamp } from "firebase/firestore";
 
 const AddTask = (props) => {

@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { database } from "./firebase";
 import { collection, addDoc, Timestamp, query, orderBy, onSnapshot } from "firebase/firestore";
 import "./App.css";
-import AddTask from "./AddTask";
+import AddTask from "./components/AddTask";
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Login from "./pages/login";
+import Dashboard from './pages/dashboard'
 
 function App() {
   const [tasks, setTasks] = useState([])
@@ -20,12 +23,12 @@ function App() {
   console.log(tasks);
 
   return (
-    <div>
-      <AddTask/>
-      {tasks.map(task => {
-        return <pre key={task.id}>{task.data.title}</pre>
-      })}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/login" element={<Login/>}/>
+        <Route exact path="/dashboard" element={<Dashboard/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
