@@ -3,6 +3,8 @@ import {auth, logout} from '../firebase'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import { useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
+import AddTask from '../components/AddTask'
+import DisplayTasks from '../components/DisplayTasks'
 
 
 function Dashboard() {
@@ -14,11 +16,15 @@ function Dashboard() {
     if(!user) return navigate('/login')
   }, [user, navigate])
 
+  // console.log(auth.uid);
+
   
   return (
-    <div className='text-3xl'>
+    <div>
       <h1>Hi, {user && user.displayName}</h1>
-      <button onClick={logout}>Logout</button>
+      <button className='border-2' onClick={logout}>Logout</button>
+      <AddTask/>
+      <DisplayTasks/>
     </div>
   )
 }

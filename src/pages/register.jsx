@@ -27,7 +27,7 @@ function Register() {
           <form action="/" className="flex flex-col gap-2 items-center">
             <input value={name} onChange={(event) => setName(event.target.value)} type="text" name="email" placeholder="Name" className="w-full rounded-md p-1"/>
             <input value={email} onChange={(event) => setEmail(event.target.value)} type="text" name="email" placeholder="Email Address" className="w-full rounded-md p-1"/>
-            <input value={password} onChange={(event) => setPassword(event.target.value)} type="text" name="password" placeholder="Password" className="w-full rounded-md p-1"/>
+            <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" name="password" placeholder="Password" className="w-full rounded-md p-1"/>
             <button onClick={(event) => registerUserWithEmailAndPassword(event, name, email, password)} className="w-40 bg-indigo-500 text-white rounded-xl p-1 hover:drop-shadow-lg">Register Now</button>
           </form>
         </div>

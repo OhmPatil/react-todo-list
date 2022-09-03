@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { database } from "./firebase";
-import { collection, addDoc, Timestamp, query, orderBy, onSnapshot } from "firebase/firestore";
+import { database, auth } from "./firebase";
+import { collection, addDoc, Timestamp, query, orderBy, onSnapshot, where } from "firebase/firestore";
 import "./App.css";
 import AddTask from "./components/AddTask";
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
@@ -10,10 +10,8 @@ import Register from "./pages/register";
 import ResetPass from "./pages/reset-password";
 
 function App() {
-  const [tasks, setTasks] = useState([])
-
   // useEffect(() => {
-  //   const q = query(collection(database, 'tasks'), orderBy('created', "desc"))
+  //   const q = query(collection(database, 'tasks'),orderBy('created', "desc"))
   //   onSnapshot(q, (querySnapshot) => {
   //     setTasks(querySnapshot.docs.map(doc => ({
   //       id: doc.id,
@@ -25,6 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route exact path="/" element={<Login/>}/>
         <Route exact path="/login" element={<Login/>}/>
         <Route exact path="/dashboard" element={<Dashboard/>}/>
         <Route exact path="/register" element={<Register/>}/>

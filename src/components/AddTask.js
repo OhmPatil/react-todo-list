@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { database } from "../firebase";
+import { database, auth } from "../firebase";
 import { collection, addDoc, query, Timestamp } from "firebase/firestore";
 
 const AddTask = (props) => {
@@ -15,6 +15,7 @@ const AddTask = (props) => {
         description: description,
         isCompleted: isCompleted,
         created: Timestamp.now(),
+        uid: auth.currentUser.uid
       });
     } catch (error) {
       alert(error);
