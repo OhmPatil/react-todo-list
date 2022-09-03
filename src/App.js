@@ -6,6 +6,7 @@ import AddTask from "./components/AddTask";
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Login from "./pages/login";
 import Dashboard from './pages/dashboard'
+import Register from "./pages/register";
 
 function App() {
   const [tasks, setTasks] = useState([])
@@ -20,13 +21,12 @@ function App() {
   //   })
   // }, [])
 
-  console.log(tasks);
-
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/login" element={<Login/>}/>
         <Route exact path="/dashboard" element={<Dashboard/>}/>
+        <Route exact path="/register" element={<Register/>}/>
       </Routes>
     </BrowserRouter>
   );

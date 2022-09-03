@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, query, getDocs, collection, where, addDoc } from "firebase/firestore";
-import {GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, signOut} from 'firebase/auth'
+import {GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, createUserWithEmailAndPassword} from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: "AIzaSyAi4fJChRyUQuoNChFJXdJWVKDnN2uHDUA",
@@ -38,8 +38,40 @@ const signInWithGoogle = async (event) => {
   }
 }
 
+const logInWithEmailAndPassword = async (event, email, password) => {
+  event.preventDefault();
+  try {
+    await signInWithEmailAndPassword(auth, email, password)
+  }
+  catch(error){
+    alert(error.message);
+  }
+}
+
+const registerUserWithEmailAndPassword = async (event, name, email, password) => {
+  event.preventDefault()
+  try {
+    const response = await createUserWithEmailAndPassword(auth, email, password)
+    const user = response.user
+    await addDoc(collection(database, 'users'), {
+      uid: user.uid,
+      displayName: name,
+      authProvider: 'local',
+      email: email,
+    })
+  }
+  catch(error){
+    alert(error.message)
+  }
+}
+
 const logout = () => {
   signOut(auth);
 }
 
-export { database, auth, signInWithGoogle, logout };
+export { database,
+  auth,
+  signInWithGoogle, 
+  logInWithEmailAndPassword, 
+  registerUserWithEmailAndPassword, 
+  logout };
