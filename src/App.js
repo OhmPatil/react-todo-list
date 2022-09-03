@@ -10,15 +10,15 @@ import Dashboard from './pages/dashboard'
 function App() {
   const [tasks, setTasks] = useState([])
 
-  useEffect(() => {
-    const q = query(collection(database, 'tasks'), orderBy('created', "desc"))
-    onSnapshot(q, (querySnapshot) => {
-      setTasks(querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        data: doc.data()
-      })))
-    })
-  }, [])
+  // useEffect(() => {
+  //   const q = query(collection(database, 'tasks'), orderBy('created', "desc"))
+  //   onSnapshot(q, (querySnapshot) => {
+  //     setTasks(querySnapshot.docs.map(doc => ({
+  //       id: doc.id,
+  //       data: doc.data()
+  //     })))
+  //   })
+  // }, [])
 
   console.log(tasks);
 
