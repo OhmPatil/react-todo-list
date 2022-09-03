@@ -50,6 +50,10 @@ const logInWithEmailAndPassword = async (event, email, password) => {
 
 const registerUserWithEmailAndPassword = async (event, name, email, password) => {
   event.preventDefault()
+  if(!name) {
+    alert("Name cannot be blank <3")
+    return
+  }
   try {
     const response = await createUserWithEmailAndPassword(auth, email, password)
     const user = response.user
@@ -65,13 +69,25 @@ const registerUserWithEmailAndPassword = async (event, name, email, password) =>
   }
 }
 
+const sendPasswordReset = async (email) => {
+  try{
+    await sendPasswordResetEmail(auth, email)
+    alert('Reset Link Sent <3')
+  }
+  catch(error) {
+    alert(error.message)
+  }
+}
+
 const logout = () => {
   signOut(auth);
 }
 
-export { database,
+export { 
+  database,
   auth,
   signInWithGoogle, 
   logInWithEmailAndPassword, 
-  registerUserWithEmailAndPassword, 
+  registerUserWithEmailAndPassword,
+  sendPasswordReset, 
   logout };

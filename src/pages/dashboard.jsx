@@ -14,7 +14,6 @@ function Dashboard() {
     if(!user) return navigate('/login')
   }, [user, navigate])
 
-  console.log(user);
   
   return (
     <div className='text-3xl'>

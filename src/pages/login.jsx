@@ -20,7 +20,7 @@ function Login() {
   useEffect(() => {
     if(user) navigate('/dashboard')
   }, [user, navigate])
-  
+
   return (
     <div className="flex justify-center items-center bg-gradient-to-r from-sky-500 to-indigo-500 w-screen h-screen">
       <div className="flex flex-col items-center justify-center gap-3 text-center w-[600px] h-[600px] rounded-2xl bg-slate-200/50 drop-shadow-xl">
