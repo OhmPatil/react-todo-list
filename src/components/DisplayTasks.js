@@ -22,7 +22,7 @@ function DisplayTasks() {
       }, [user])
   return (
     <div>{tasks.map((task, index) => {
-        return <Task key={index} title={task.data.title} desc={task.data.description}/>
+        return <Task key={index} id={task.id} title={task.data.title} desc={task.data.description}/>
     })}</div>
   )
 }

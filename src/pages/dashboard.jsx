@@ -27,12 +27,12 @@ function Dashboard() {
       <button onClick={logout} className='rounded border-black border-2'>Sign Out</button>
     </div>
     <div className="flex h-screen">
-      <div className="w-[15%] h-full border-2 border-red-600">
+      <div className="w-[15%] h-full">
 
       </div>
-      <div className="w-[85%] h-full border-2 border-black">
+      <div className="w-[85%] h-full">
         <DisplayTasks />
-        <button className="border-2 border-red-400" onClick={toggleShowAddTask}>Add Task</button>
+        <button className="border-2 border-red-500" onClick={toggleShowAddTask}>Add Task</button>
         <AddTask showForm={showAddTask} handleClick={toggleShowAddTask}/>
       </div>
     </div>

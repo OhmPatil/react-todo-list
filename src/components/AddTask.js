@@ -23,11 +23,12 @@ const AddTask = (props) => {
 
     setTitle("");
     setDescription("");
+    props.handleClick()
   }
 
   return (
     <>
-      {props.showForm && (
+    {props.showForm && (
     <div>
       <form onSubmit={handleSubmit}>
         <input
@@ -47,8 +48,6 @@ const AddTask = (props) => {
           onChange={(event) => setDescription(event.target.value)}
           placeholder="Enter Description"
           className="border-black border-2"
-          required
-
         />
         <button type="submit" className="border-blue-500 border-2">Submit</button>
         <button type="submit" className="border-blue-500 border-2" onClick={props.handleClick}>Close</button>
