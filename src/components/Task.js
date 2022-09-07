@@ -22,11 +22,11 @@ function Task(props) {
   }
   
   return (
-    <div className='border-black border-2 flex flex-col my-2 h-fitcontent w-[400px] sm:w-[600px] md:w-[800px]'>
-        <p className='font-bold text-xl px-2'>{props.title}</p>
-        <p className='px-2'>{props.desc}</p>
-        <button onClick={handleDelete}>Delete</button>
-        <button onClick={toggleShowEditTask}>Edit</button>
+    <div className='border-white border-2 flex flex-col my-2 h-fitcontent w-[400px] sm:w-[550px] md:w-[800px]'>
+        <p className='font-bold text-xl px-2 text-white'>{props.title}</p>
+        <p className='px-2 text-white'>{props.desc}</p>
+        <button onClick={handleDelete} className='text-white'>Delete</button>
+        <button onClick={toggleShowEditTask} className='text-white'>Edit</button>
         <EditTask showEditForm={showEditTask} handleClick={toggleShowEditTask} id={props.id}/>
     </div>
   )
