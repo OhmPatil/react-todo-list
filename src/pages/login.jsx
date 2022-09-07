@@ -41,11 +41,11 @@ function Login() {
         <div className="w-[60%]">
           <form action="/" className="flex flex-col gap-2 items-center">
             <div className="w-full mb-4 text-left">
-              <label for="email" class="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Email</label>
+              <label htmlFor="email" className="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Email</label>
               <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="youremail@example.com" required/>
             </div>
             <div className="w-full text-left">
-              <label for="password" class="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Password</label>
+              <label htmlFor="password" className="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Password</label>
               <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required/>
             </div>
             <div className="w-full text-right text-blue-600 font-semibold mb-2">
@@ -62,7 +62,7 @@ function Login() {
               <div className="w-[45%] h-[2px] bg-white/50"></div>
             </div>
             <button onClick={(event) => signInWithGoogle(event)} type="button" className="mt-2 text-white bg-[#4285F4] hover:bg-[#4285F4]/90 font-semibold rounded-lg text-md px-5 py-2.5 text-center inline-flex items-center" >
-              <svg class="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
+              <svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
               Sign in with Google
             </button>
             <div className="flex gap-2 mt-2 text-white font-semibold">

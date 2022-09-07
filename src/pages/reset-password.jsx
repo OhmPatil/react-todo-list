@@ -26,7 +26,7 @@ function ResetPass() {
         </div>
         <div className="w-[60%] flex flex-col gap-2 items-center">
           <div className="w-full mb-4 text-left">
-            <label for="email" class="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Email</label>
+            <label htmlFor="email" className="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Email</label>
             <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" name='email'className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='youremail@example.com' required/>
           </div>
           <button onClick={() => handleResetClick(email)} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-md font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">
