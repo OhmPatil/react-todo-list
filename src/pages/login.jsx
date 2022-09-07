@@ -5,26 +5,7 @@ import {useAuthState} from 'react-firebase-hooks/auth'
 import { useEffect } from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-
-const cardVariants = {
-  hidden: {
-    opacity:0,
-    y: '100vh',
-    rotate: 180,
-    borderRadius: 500
-  },
-  visible: {
-    opacity:1,
-    y:0,
-    rotate:0,
-    borderRadius: 16,
-    transition: {
-      delay:0.5,
-      duration:1,
-      type:'spring'
-    }
-  }
-}
+import cardVariants  from "../components/framer-variants/CardVariants";
 
 function Login() {
 
@@ -38,13 +19,18 @@ function Login() {
     navigate('/register')
   }
 
+  const handleForgotPasswordClick = (event) => {
+    event.preventDefault()
+    navigate('/reset')
+  }
+
   useEffect(() => {
     if(user) navigate('/dashboard')
   }, [user, navigate])
 
   return (
-    <div className="flex justify-center items-center bg-gradient-to-tr from-[rgb(50,50,50)] to-black w-screen h-screen">
-      <motion.div className="flex flex-col items-center justify-center gap-3 text-center w-[600px] h-[600px] rounded-2xl bg-[#222224]/60 bg-gradient-to-bl from-[rgb(50,50,50)]/10 to-black/10  drop-shadow-xl shadow-md"
+    <div className="flex justify-center items-center bg-gradient-to-tr from-[rgb(50,50,50)] to-black w-screen h-screen overflow-hidden">
+      <motion.div className="flex flex-col items-center justify-center gap-3 text-center w-[600px] h-[600px] rounded-2xl bg-[#222224]/60 bg-gradient-to-bl from-[rgb(50,50,50)]/10 to-black/10 drop-shadow-xl shadow-md"
       variants={cardVariants}
       initial='hidden'
       animate='visible'
@@ -56,11 +42,14 @@ function Login() {
           <form action="/" className="flex flex-col gap-2 items-center">
             <div className="w-full mb-4 text-left">
               <label for="email" class="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Email</label>
-              <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Email" required/>
+              <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="youremail@example.com" required/>
             </div>
-            <div className="w-full mb-4 text-left">
+            <div className="w-full text-left">
               <label for="password" class="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Password</label>
-              <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required/>
+              <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required/>
+            </div>
+            <div className="w-full text-right text-blue-600 font-semibold mb-2">
+              <button onClick={(event) => handleForgotPasswordClick(event)}>Forgot Password?</button>
             </div>
             <button onClick={(event) => logInWithEmailAndPassword(event, email, password )} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-md font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">
               <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -69,7 +58,7 @@ function Login() {
             </button>
             <div className="w-full flex justify-between items-center">
               <div className="w-[45%] h-[2px] bg-white/50"></div>
-              <div className="text-white/90 font-semibold text-md">Or</div>
+              <div className="text-white/90 font-semibold text-md italic">Or</div>
               <div className="w-[45%] h-[2px] bg-white/50"></div>
             </div>
             <button onClick={(event) => signInWithGoogle(event)} type="button" className="mt-2 text-white bg-[#4285F4] hover:bg-[#4285F4]/90 font-semibold rounded-lg text-md px-5 py-2.5 text-center inline-flex items-center" >
@@ -78,7 +67,7 @@ function Login() {
             </button>
             <div className="flex gap-2 mt-2 text-white font-semibold">
               <p>New user ?</p>
-              <button onClick={(event) => handleRegisterButtonClick(event)} className='text-indigo-500'>Register Now</button>
+              <button onClick={(event) => handleRegisterButtonClick(event)} className='text-blue-600'>Register Now</button>
             </div>
           </form>
         </div>
