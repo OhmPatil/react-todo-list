@@ -22,7 +22,7 @@ function Task(props) {
   }
   
   return (
-    <div className='border-black border-2 flex flex-col my-2 h-fitcontent'>
+    <div className='border-black border-2 flex flex-col my-2 h-fitcontent w-[400px] sm:w-[600px] md:w-[800px]'>
         <p className='font-bold text-xl px-2'>{props.title}</p>
         <p className='px-2'>{props.desc}</p>
         <button onClick={handleDelete}>Delete</button>

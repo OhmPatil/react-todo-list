@@ -4,6 +4,27 @@ import {auth, signInWithGoogle, logInWithEmailAndPassword} from '../firebase'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import { useEffect } from "react";
 import { useState } from "react";
+import { motion } from "framer-motion";
+
+const cardVariants = {
+  hidden: {
+    opacity:0,
+    y: '100vh',
+    rotate: 180,
+    borderRadius: 500
+  },
+  visible: {
+    opacity:1,
+    y:0,
+    rotate:0,
+    borderRadius: 16,
+    transition: {
+      delay:0.5,
+      duration:1,
+      type:'spring'
+    }
+  }
+}
 
 function Login() {
 
@@ -23,7 +44,10 @@ function Login() {
 
   return (
     <div className="flex justify-center items-center bg-gradient-to-r from-sky-500 to-indigo-500 w-screen h-screen">
-      <div className="flex flex-col items-center justify-center gap-3 text-center w-[600px] h-[600px] rounded-2xl bg-slate-200/50 drop-shadow-xl">
+      <motion.div className="flex flex-col items-center justify-center gap-3 text-center w-[600px] h-[600px] rounded-2xl bg-slate-200/50 drop-shadow-xl shadow-md"
+      variants={cardVariants}
+      initial='hidden'
+      animate='visible'>
         <div>
           <h1 className="text-3xl font-semibold">Login</h1>
         </div>
@@ -36,7 +60,7 @@ function Login() {
             <button onClick={(event) => handleRegisterButtonClick(event)} className="w-40 bg-indigo-500 text-white rounded-xl p-1 hover:drop-shadow-lg">Register Now</button>
           </form>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
