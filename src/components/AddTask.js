@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { database, auth } from "../firebase";
-import { collection, addDoc, query, Timestamp } from "firebase/firestore";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 const AddTask = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [isCompleted, setIsCompleted] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -13,7 +12,7 @@ const AddTask = (props) => {
       await addDoc(collection(database, "tasks"), {
         title: title,
         description: description,
-        isCompleted: isCompleted,
+        isCompleted: false,
         created: Timestamp.now(),
         uid: auth.currentUser.uid
       });

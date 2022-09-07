@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, deleteDoc } from "firebase/firestore";
 import { database } from '../firebase';
 import EditTask from './EditTask';
 

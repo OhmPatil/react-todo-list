@@ -14,6 +14,9 @@ function Login() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
+  console.log(loading);
+  console.log(error);
+
   const handleRegisterButtonClick = (event) =>{
     event.preventDefault()
     navigate('/register')
@@ -30,15 +33,15 @@ function Login() {
 
   return (
     <div className="flex justify-center items-center bg-gradient-to-tr from-[rgb(50,50,50)] to-black w-screen h-screen overflow-hidden">
-      <motion.div className="flex flex-col items-center justify-center gap-3 text-center w-[600px] h-[600px] rounded-2xl bg-[#222224]/60 bg-gradient-to-bl from-[rgb(50,50,50)]/10 to-black/10 drop-shadow-xl shadow-md"
+      <motion.div className="flex flex-col items-center justify-center gap-3 text-center w-[400px] h-fitcontent py-4 mx-2 sm:w-[600px] sm:h-[600px] rounded-2xl bg-[#222224]/60 bg-gradient-to-bl from-[rgb(50,50,50)]/10 to-black/10 drop-shadow-xl shadow-md"
       variants={cardVariants}
       initial='hidden'
       animate='visible'
       >
         <div>
-          <h1 className="text-3xl font-semibold text-white">Login</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold text-white">Login</h1>
         </div>
-        <div className="w-[60%]">
+        <div className="w-[85%] sm:w-[70%]">
           <form action="/" className="flex flex-col gap-2 items-center">
             <div className="w-full mb-4 text-left">
               <label htmlFor="email" className="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Email</label>
@@ -51,7 +54,7 @@ function Login() {
             <div className="w-full text-right text-blue-600 font-semibold mb-2">
               <button onClick={(event) => handleForgotPasswordClick(event)}>Forgot Password?</button>
             </div>
-            <button onClick={(event) => logInWithEmailAndPassword(event, email, password )} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-md font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">
+            <button onClick={(event) => logInWithEmailAndPassword(event, email, password )} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm sm:text-base font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">
               <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                 Log In
               </span>
@@ -61,15 +64,15 @@ function Login() {
               <div className="text-white/90 font-semibold text-md italic">Or</div>
               <div className="w-[45%] h-[2px] bg-white/50"></div>
             </div>
-            <button onClick={(event) => signInWithGoogle(event)} type="button" className="mt-2 text-white bg-[#4285F4] hover:bg-[#4285F4]/90 font-semibold rounded-lg text-md px-5 py-2.5 text-center inline-flex items-center" >
+            <button onClick={(event) => signInWithGoogle(event)} type="button" className="mt-2 text-white bg-[#4285F4] hover:bg-[#4285F4]/90 font-semibold rounded-lg text-sm sm:text-base px-5 py-2.5 text-center inline-flex items-center" >
               <svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
               Sign in with Google
             </button>
-            <div className="flex gap-2 mt-2 text-white font-semibold">
-              <p>New user ?</p>
-              <button onClick={(event) => handleRegisterButtonClick(event)} className='text-blue-600'>Register Now</button>
-            </div>
           </form>
+          <div className="flex gap-2 mt-4 text-white font-semibold text-sm sm:text-base sm:w-full justify-center">
+            <p>Dont have an account?</p>
+            <button onClick={(event) => handleRegisterButtonClick(event)} className='text-blue-600'>Create one</button>
+          </div>
         </div>
       </motion.div>
     </div>

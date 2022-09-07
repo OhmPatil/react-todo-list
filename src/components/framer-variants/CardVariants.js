@@ -1,19 +1,41 @@
-const cardVariants = {
+let cardVariants = {};
+
+const isMobile = window.innerWidth < 815;
+
+if (!isMobile) {
+  cardVariants = {
     hidden: {
-      opacity:0,
-      y: '500px',
-      borderRadius: 500
+      opacity: 0,
+      y: "200px",
+      borderRadius: 500,
     },
     visible: {
-      opacity:1,
-      y:0,
+      opacity: 1,
+      y: 0,
       borderRadius: 16,
       transition: {
-        delay:0.25,
-        duration:1.20,
-        type:'spring',
-      }
-    }
-  }
+        delay: 0.25,
+        duration: 1,
+        type: "spring",
+      },
+    },
+  };
+} else {
+  cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: "200px",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.25,
+        duration: 1,
+        type: "spring",
+      },
+    },
+  };
+}
 
-  export default cardVariants
+export default cardVariants;
