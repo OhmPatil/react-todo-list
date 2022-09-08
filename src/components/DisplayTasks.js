@@ -8,7 +8,6 @@ function DisplayTasks() {
     const [tasks , setTasks] = useState([])
     const [user, loading, error] = useAuthState(auth)
 
-
     useEffect(() => {
         if (user) {
             const q = query(collection(database, 'tasks'), where('uid', '==', user.uid))
@@ -22,7 +21,7 @@ function DisplayTasks() {
       }, [user])
   return (
     <div>{tasks.map((task, index) => {
-        return <Task key={index} id={task.id} title={task.data.title} desc={task.data.description}/>
+        return <Task key={index} id={task.id} title={task.data.title} desc={task.data.description} created={task.data.created} isCompleted={task.data.isCompleted} dueDate={task.data.dueDate}/>
     })}</div>
   )
 }
