@@ -33,6 +33,7 @@ if (!isMobile) {
         delay: 0.25,
         duration: 1,
         type: "spring",
+        damping: 25
       },
     },
   };

@@ -14,9 +14,6 @@ function Login() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
-  console.log(loading);
-  console.log(error);
-
   const handleRegisterButtonClick = (event) =>{
     event.preventDefault()
     navigate('/register')
@@ -51,7 +48,7 @@ function Login() {
               <label htmlFor="password" className="block mb-2 text-md font-semibold text-gray-900 dark:text-gray-300">Password</label>
               <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required/>
             </div>
-            <div className="w-full text-right text-blue-600 font-semibold mb-2">
+            <div className="w-full text-right text-blue-600 font-semibold mb-2 text-sm sm:text-base">
               <button onClick={(event) => handleForgotPasswordClick(event)}>Forgot Password?</button>
             </div>
             <button onClick={(event) => logInWithEmailAndPassword(event, email, password )} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm sm:text-base font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">

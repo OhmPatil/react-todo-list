@@ -51,16 +51,18 @@ function Task(props) {
   getDayDifference(props.dueDate);
 
   return (
-    <div className='border-white border-2 flex flex-col my-2 h-fitcontent w-[400px] sm:w-[550px] md:w-[800px]'>
-      <div className='flex justify-between items-center'>
-        <input type='checkbox' onChange={handleCheckboxChange} checked={props.isCompleted}/>
-        <p className='font-bold text-xl px-2 text-white'>{props.title}</p>
-        <p className='text-md px-2 text-white'>Due on: {props.dueDate.toDate().toDateString()}</p>
+    <div className='bg-[#222224]/70 bg-gradient-to-b from-[rgb(50,50,50)]/60 to-black/40 flex my-4 h-fitcontent w-[350px] sm:w-[550px] md:w-[800px] p-4 gap-4 rounded-xl drop-shadow-xl shadow-md '>
+      <div className='w-full flex justify-between items-center'>
+        <div className='flex items-center'>
+          <input type='checkbox' onChange={handleCheckboxChange} checked={props.isCompleted} className='w-[15px] h-[15px] sm:w-5 sm:h-5'/>
+          <p className='font-bold text-sm sm:text-xl px-2 text-white'>{props.title}</p>
+        </div>
+          <p className='text-sm sm:text-base px-2 text-white'>Due: {props.dueDate.toDate().toDateString()}</p>
+          <div className='flex items-center gap-2 sm:gap-4'>
+            <button onClick={toggleShowEditTask} className='text-yellow-500 text-sm sm:text-base'>Edit</button>
+            <button onClick={handleDelete} className='text-red-600 text-sm sm:text-base'>Delete</button>
+          </div>
       </div>
-        {props.isCompleted && <pre className='text-white'>YES</pre>}
-        {!props.isCompleted && <pre className='text-white'>NO</pre>}
-        <button onClick={handleDelete} className='text-white'>Delete</button>
-        <button onClick={toggleShowEditTask} className='text-white'>Edit</button>
         <EditTask showEditForm={showEditTask} handleClick={toggleShowEditTask} id={props.id}/>
     </div>
   )
