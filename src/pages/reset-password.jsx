@@ -35,6 +35,10 @@ function ResetPass() {
             </span>
           </button>
         </div>
+        <div className='w-full text-white flex justify-center items-center gap-1 text-sm sm:text-base'>
+          <p>Got lost? Get back to the</p>
+          <button onClick={() => navigate('/login')} className='text-blue-600 font-semibold '>log in page</button>
+        </div>
       </motion.div>
     </div>
   )

@@ -51,7 +51,8 @@ function Task(props) {
   getDayDifference(props.dueDate);
 
   return (
-    <div className='bg-[#222224]/70 bg-gradient-to-b from-[rgb(50,50,50)]/60 to-black/40 flex my-4 h-fitcontent w-[97vw] sm:w-[550px] md:w-[800px] py-4 px-2 sm:px-4 rounded-xl drop-shadow-xl shadow-md '>
+    <div className='flex flex-col gap-4 bg-[#222224]/70 bg-gradient-to-b from-[rgb(50,50,50)]/60 to-black/40 my-4 h-fitcontent w-[97vw] sm:w-[550px] md:w-[800px] py-4 px-2 sm:px-4 rounded-xl drop-shadow-xl shadow-md'>
+    <div className='flex'>
       <div className='w-full flex justify-between items-center'>
         <div className='flex items-center w-1/3'>
           <input type='checkbox' onChange={handleCheckboxChange} checked={props.isCompleted} className='w-[15px] h-[15px] sm:w-5 sm:h-5'/>
@@ -71,7 +72,8 @@ function Task(props) {
             </div>
           </div>
       </div>
-        <EditTask showEditForm={showEditTask} handleClick={toggleShowEditTask} id={props.id}/>
+    </div>
+    <EditTask showEditForm={showEditTask} handleClick={toggleShowEditTask} id={props.id}/>
     </div>
   )
 }
