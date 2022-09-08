@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { doc, updateDoc } from "firebase/firestore";
 import { database } from '../firebase';
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import editTaskVariants from './framer-variants/EditTaskVariants';
 
 function EditTask(props) {
 
@@ -29,7 +30,12 @@ function EditTask(props) {
   return (
     <>
     {props.showEditForm && (
-    <motion.div className='w-full flex items-center'>
+      <AnimatePresence>
+    <motion.div className='w-full flex items-center'
+    variants={editTaskVariants}
+    animate='visible'
+    initial='hidden'
+    exit='hidden'>
       <form onSubmit={(event) => handleUpdate(event)} className='w-full flex justify-between items-center'>
         <input
           type="text"
@@ -61,6 +67,7 @@ function EditTask(props) {
         </button>
       </form>
     </motion.div>
+    </AnimatePresence>
       )}
     </>
   )

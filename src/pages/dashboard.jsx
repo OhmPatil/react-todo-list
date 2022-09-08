@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import AddTask from "../components/AddTask";
 import DisplayTasks from "../components/DisplayTasks";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import taskVariants from "../components/framer-variants/TaskVariants";
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
@@ -22,18 +24,21 @@ function Dashboard() {
   
   return (
     <>
-    <div className="flex gap-2 justify-end">
+    <div className="flex gap-2 justify-end h-[5vh] items-center bg-black text-white border-b-2 border-white pr-2">
       {user && <p>Logged in as {user.email}</p>}
-      <button onClick={logout} className='rounded border-black border-2'>Sign Out</button>
+      <button onClick={logout} className='text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-base px-3 py-1.5 text-center'>Sign Out</button>
     </div>
-    <div className="flex h-screen w-screen bg-black overflow-x-hidden">
+    <div className="flex h-[95vh] w-screen bg-black overflow-x-hidden">
       <div className="w-full h-full flex flex-col items-center">
         <DisplayTasks />
-        <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm sm:text-base font-medium sm:font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white" onClick={toggleShowAddTask}>
+        <motion.button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm sm:text-base font-medium sm:font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white" onClick={toggleShowAddTask}
+        variants={taskVariants}
+        animate='visible'
+        initial='hidden'>
           <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
             Add Task
           </span>
-          </button>
+          </motion.button>
         <AddTask showForm={showAddTask} handleClick={toggleShowAddTask}/>
       </div>
     </div>

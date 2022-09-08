@@ -3,6 +3,8 @@ import { doc, deleteDoc, updateDoc, getDoc } from "firebase/firestore";
 import { database } from '../firebase';
 import EditTask from './EditTask';
 import getDayDifference from '../utils/getDayDifference'
+import { motion } from "framer-motion";
+import taskVariants from './framer-variants/TaskVariants';
 
 function Task(props) {
 
@@ -51,7 +53,10 @@ function Task(props) {
   getDayDifference(props.dueDate);
 
   return (
-    <div className='flex flex-col gap-4 bg-[#222224]/70 bg-gradient-to-b from-[rgb(50,50,50)]/60 to-black/40 my-4 h-fitcontent w-[97vw] sm:w-[550px] md:w-[800px] py-4 px-2 sm:px-4 rounded-xl drop-shadow-xl shadow-md'>
+    <motion.div className='flex flex-col gap-4 bg-[#222224]/70 bg-gradient-to-b from-[rgb(50,50,50)]/60 to-black/40 my-4 h-fitcontent w-[97vw] sm:w-[550px] md:w-[800px] py-4 px-2 sm:px-4 rounded-xl drop-shadow-xl shadow-md'
+      variants={taskVariants}
+      animate='visible'
+      initial='hidden'>
     <div className='flex'>
       <div className='w-full flex justify-between items-center'>
         <div className='flex items-center w-1/3'>
@@ -74,7 +79,7 @@ function Task(props) {
       </div>
     </div>
     <EditTask showEditForm={showEditTask} handleClick={toggleShowEditTask} id={props.id}/>
-    </div>
+    </motion.div>
   )
 }
 
