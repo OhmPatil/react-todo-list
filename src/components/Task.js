@@ -51,13 +51,13 @@ function Task(props) {
   getDayDifference(props.dueDate);
 
   return (
-    <div className='bg-[#222224]/70 bg-gradient-to-b from-[rgb(50,50,50)]/60 to-black/40 flex my-4 h-fitcontent w-[400px] sm:w-[550px] md:w-[800px] py-4 px-2 sm:px-4 rounded-xl drop-shadow-xl shadow-md '>
+    <div className='bg-[#222224]/70 bg-gradient-to-b from-[rgb(50,50,50)]/60 to-black/40 flex my-4 h-fitcontent w-[97vw] sm:w-[550px] md:w-[800px] py-4 px-2 sm:px-4 rounded-xl drop-shadow-xl shadow-md '>
       <div className='w-full flex justify-between items-center'>
-        <div className='flex items-center'>
+        <div className='flex items-center w-1/3'>
           <input type='checkbox' onChange={handleCheckboxChange} checked={props.isCompleted} className='w-[15px] h-[15px] sm:w-5 sm:h-5'/>
-          <p className='font-bold text-sm sm:text-xl px-2 text-white'>{props.title}</p>
+          <p className='font-bold text-sm sm:text-xl px-2 w-[85%] text-white break-words'>{props.title}</p>
         </div>
-          <p className='text-sm sm:text-base px-2 text-white'>Due: {props.dueDate.toDate().toDateString()}</p>
+          <p className='text-sm sm:text-base px-2 text-white w-1/2'>Due: {props.dueDate.toDate().toDateString()}</p>
           <div className='flex items-center gap-3 sm:gap-4'>
             <div onClick={toggleShowEditTask} className='hover:cursor-pointer'>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className='text-yellow-500 w-5 h-5 sm:w-6 sm:h-6'>
