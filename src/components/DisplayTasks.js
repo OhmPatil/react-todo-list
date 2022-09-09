@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { collection, addDoc, Timestamp, query, orderBy, onSnapshot, where } from "firebase/firestore";
+import { collection, query, onSnapshot, where } from "firebase/firestore";
 import { database, auth } from "../firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Task from './Task';
 
 function DisplayTasks() {
     const [tasks , setTasks] = useState([])
-    const [user, loading, error] = useAuthState(auth)
+    const [user] = useAuthState(auth)
 
     useEffect(() => {
         if (user) {
