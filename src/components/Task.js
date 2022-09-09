@@ -58,7 +58,10 @@ function Task(props) {
       variants={taskVariants}
       animate='visible'
       initial='hidden'>
-    <div className='flex'>
+    <motion.div className='flex'
+    initial={{opacity: 0, y: 50}}
+    animate={{opacity: 1, y: 0}}
+    transition={{delay: 0.7}}>
       <div className='w-full flex justify-between items-center'>
         <div className='flex items-center w-1/3'>
           <input type='checkbox' onChange={handleCheckboxChange} checked={props.isCompleted} className='w-[15px] h-[15px] sm:w-5 sm:h-5'/>
@@ -79,7 +82,7 @@ function Task(props) {
             </div>
           </div>
       </div>
-    </div>
+    </motion.div>
     <EditTask showEditForm={showEditTask} handleClick={toggleShowEditTask} id={props.id}/>
     </motion.div>
   )

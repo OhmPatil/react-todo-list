@@ -2,6 +2,7 @@ import { useState } from "react";
 import { database, auth } from "../firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import {  motion } from "framer-motion";
+import buttonVariants from "./framer-variants/ButtonVariants";
 
 const AddTask = (props) => {
   const [title, setTitle] = useState("");
@@ -73,11 +74,11 @@ const AddTask = (props) => {
             />
           </div>
           <div className="w-full flex justify-center items-center">
-            <button  type="submit" className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm sm:text-base font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+            <motion.button variants={buttonVariants} whileHover='hover' whileTap='click'  type="submit" className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm sm:text-base font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
               <span className="relative px-2 py-1 sm:px-3 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                 Add
               </span>
-          </button>
+          </motion.button>
           </div>
 
           <button onClick={props.handleClick} className='w-inherit h-inherit fixed top-1 right-1 hover:cursor-pointer'>

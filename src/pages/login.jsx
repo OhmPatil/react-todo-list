@@ -10,7 +10,7 @@ import buttonVariants from "../components/framer-variants/ButtonVariants";
 
 function Login() {
 
-  const [user, loading, error] = useAuthState(auth)
+  const [user] = useAuthState(auth)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()

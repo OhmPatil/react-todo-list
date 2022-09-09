@@ -11,7 +11,7 @@ import taskVariants from "../components/framer-variants/TaskVariants";
 import buttonVariants from "../components/framer-variants/ButtonVariants";
 
 function Dashboard() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [showAddTask, setShowAddTask] = useState(false)
   const navigate = useNavigate();
 
@@ -26,8 +26,8 @@ function Dashboard() {
   return (
     <>
     <div className="flex gap-2 justify-end h-[5vh] items-center bg-black text-white border-b-2 border-white pr-2">
-      {user && <p>Logged in as {user.email}</p>}
-      <button onClick={logout} className='text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-base px-3 py-1.5 text-center'>Sign Out</button>
+      {user && <p className="font-light">Logged in as {user.email}</p>}
+      <motion.button variants={buttonVariants} whileHover='hover' whileTap='click' onClick={logout} className='text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-base px-3 py-1.5 text-center'>Sign Out</motion.button>
     </div>
     <div className="flex h-[95vh] w-screen bg-black overflow-x-hidden">
       <div className="w-full h-full flex flex-col items-center">
