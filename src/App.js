@@ -8,7 +8,7 @@ import ResetPass from "./pages/reset-password";
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="react-todo-list">
       <Routes>
         <Route exact path="/" element={<Login/>}/>
         <Route exact path="/login" element={<Login/>}/>
