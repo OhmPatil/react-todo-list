@@ -8,6 +8,7 @@ import DisplayTasks from "../components/DisplayTasks";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import taskVariants from "../components/framer-variants/TaskVariants";
+import buttonVariants from "../components/framer-variants/ButtonVariants";
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);

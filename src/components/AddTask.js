@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { database, auth } from "../firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
+import {  motion } from "framer-motion";
 
 const AddTask = (props) => {
   const [title, setTitle] = useState("");
@@ -30,8 +31,14 @@ const AddTask = (props) => {
   return (
     <>
     {props.showForm && (
-    <div className="fixed w-screen h-screen bg-gray-700/50 flex justify-center items-center backdrop-blur-sm top-0 left-0 z-[1]">
-      <div className="w-[95%] h-fitcontent sm:w-[500px] bg-black p-4 rounded-xl drop-shadow-xl shadow-md">
+    <motion.div className="fixed w-screen h-screen bg-gray-700/50 flex justify-center items-center backdrop-blur-sm top-0 left-0 z-[1]"
+    initial={{y: '-100vh'}}
+    animate={{y: 0}}
+    transition={{type: 'easeIn', when: 'beforeChildren'}}>
+      <motion.div className="w-[95%] h-fitcontent sm:w-[500px] bg-black p-4 rounded-xl drop-shadow-xl shadow-md"
+      initial={{opacity: 0, y: -200}}
+      animate={{opacity: 1, y: 0}}
+      transition={{delay: 0.25}}>
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 mt-5'>
           <div className="flex justify-evenly gap-2">
             <input
@@ -79,8 +86,8 @@ const AddTask = (props) => {
             </svg>
           </button>
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
       )}
     </>
   );
