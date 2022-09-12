@@ -29,14 +29,13 @@ function EditTask(props) {
 
     
   return (
-    <>
+    <AnimatePresence>
     {props.showEditForm && (
-      <AnimatePresence>
     <motion.div className='w-full flex items-center'
     variants={editTaskVariants}
     animate='visible'
     initial='hidden'
-    exit={{y: -100}}>
+    exit='exit'>
       <form onSubmit={(event) => handleUpdate(event)} className='w-full flex justify-between items-center'>
         <input
           type="text"
@@ -68,9 +67,8 @@ function EditTask(props) {
         </motion.button>
       </form>
     </motion.div>
-    </AnimatePresence>
       )}
-    </>
+    </AnimatePresence>
   )
 }
 
