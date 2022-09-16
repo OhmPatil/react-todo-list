@@ -10,6 +10,7 @@ function Task(props) {
   const [showEditTask, setShowEditTask] = useState(false)
 
   function toggleShowEditTask(event){
+    event.preventDefault();
     event.stopPropagation();
     setShowEditTask(!showEditTask)
   }

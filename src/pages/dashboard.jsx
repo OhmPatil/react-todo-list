@@ -40,7 +40,8 @@ function Dashboard() {
       }
     }, [user])
 
-  function toggleShowAddTask(){
+  function toggleShowAddTask(event){
+    event.preventDefault();
     setShowAddTask(!showAddTask)
   }
 

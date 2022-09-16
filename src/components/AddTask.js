@@ -82,7 +82,7 @@ const AddTask = (props) => {
           </motion.button>
           </div>
 
-          <button onClick={props.handleClick} className='w-inherit h-inherit fixed top-1 right-1 hover:cursor-pointer'>
+          <button onClick={(event) => props.handleClick(event)} className='w-inherit h-inherit fixed top-1 right-1 hover:cursor-pointer'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-red-600 fixed top-1.5 right-1.5 hover:cursor-pointer'">
               <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
             </svg>
