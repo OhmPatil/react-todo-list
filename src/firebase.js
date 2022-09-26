@@ -44,7 +44,8 @@ const logInWithEmailAndPassword = async (event, email, password) => {
     await signInWithEmailAndPassword(auth, email, password)
   }
   catch(error){
-    alert(error.message);
+    alert(error.message)
+    window.location.reload()
   }
 }
 

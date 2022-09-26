@@ -10,7 +10,7 @@ taskVariants = {
         y: 0,
         transition: {
             delay: 0.25,
-            duration: 1,
+            duration: .75,
             type: 'spring',
             when: 'beforeChildren'
         }

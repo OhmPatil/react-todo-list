@@ -7,12 +7,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import cardVariants  from "../components/framer-variants/CardVariants";
 import buttonVariants from "../components/framer-variants/ButtonVariants";
+import SyncLoader from "react-spinners/SyncLoader";
 
 function Login() {
 
   const [user] = useAuthState(auth)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(true);
   const navigate = useNavigate()
 
   const handleRegisterButtonClick = (event) =>{
@@ -25,8 +28,20 @@ function Login() {
     navigate('/reset')
   }
 
+  const loginClick = (event) => {
+    setLoading(true);
+    logInWithEmailAndPassword(event, email, password)
+  }
+  
+  const googleClick = (event) => {
+    setLoading(true)
+    signInWithGoogle(event);
+  }
+  
   useEffect(() => {
     if(user) navigate('/dashboard')
+    if(!user) setStatus(false)
+    setLoading(false)
   }, [user, navigate])
 
   return (
@@ -52,17 +67,20 @@ function Login() {
             <div className="w-full text-right text-blue-600 font-semibold mb-2 text-sm sm:text-base">
               <button onClick={(event) => handleForgotPasswordClick(event)}>Forgot Password?</button>
             </div>
-            <motion.button type="submit" variants={buttonVariants} whileHover='hover' whileTap='click' onClick={(event) => logInWithEmailAndPassword(event, email, password )} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm sm:text-base font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white">
+            <motion.button type="submit" variants={buttonVariants} whileHover='hover' whileTap='click' onClick={(event) => loginClick(event)} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm sm:text-base font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white">
               <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                 Log In
               </span>
             </motion.button>
+            <div className="my-2">
+              <SyncLoader loading={loading} color="#7F33D5"/>
+            </div>
             <div className="w-full flex justify-between items-center">
               <div className="w-[45%] h-[2px] bg-white/50"></div>
               <div className="text-white/90 font-semibold text-md italic">Or</div>
               <div className="w-[45%] h-[2px] bg-white/50"></div>
             </div>
-            <motion.button variants={buttonVariants} whileHover='hover' whileTap='click' onClick={(event) => signInWithGoogle(event)} type="button" className="mt-2 text-white bg-[#4285F4] hover:bg-[#4285F4]/90 font-semibold rounded-lg text-sm sm:text-base px-5 py-2.5 text-center inline-flex items-center" >
+            <motion.button variants={buttonVariants} whileHover='hover' whileTap='click' onClick={(event) => googleClick(event)} type="button" className="mt-2 text-white bg-[#4285F4] hover:bg-[#4285F4]/90 font-semibold rounded-lg text-sm sm:text-base px-5 py-2.5 text-center inline-flex items-center" >
               <svg className="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
               Sign in with Google
             </motion.button>
