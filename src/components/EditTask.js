@@ -6,8 +6,8 @@ import editTaskVariants from "./framer-variants/EditTaskVariants";
 import buttonVariants from "./framer-variants/ButtonVariants";
 
 function EditTask(props) {
-  const [editedTitle, setEditedTitle] = useState("");
-  const [editedDesc, setEditedDesc] = useState("");
+  // const [editedTitle, setEditedTitle] = useState("");
+  // const [editedDesc, setEditedDesc] = useState("");
 
   const titleRef = useRef();
   const descRef = useRef();
