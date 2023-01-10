@@ -16,7 +16,7 @@ editTaskVariants = {
     },
     exit: {
         opacity: 0,
-        y: '-15px',
+        y: '-10px',
     }
 }
 

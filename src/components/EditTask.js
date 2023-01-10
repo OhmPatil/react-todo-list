@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { database } from "../firebase";
 import { AnimatePresence, motion } from "framer-motion";
@@ -9,17 +9,18 @@ function EditTask(props) {
   const [editedTitle, setEditedTitle] = useState("");
   const [editedDesc, setEditedDesc] = useState("");
 
+  const titleRef = useRef();
+  const descRef = useRef();
+
   async function handleUpdate(event) {
     event.preventDefault();
     event.stopPropagation();
     const docRef = doc(database, "tasks", props.id);
     try {
       await updateDoc(docRef, {
-        title: editedTitle,
-        description: editedDesc,
+        title: titleRef.current.value,
+        description: descRef.current.value,
       });
-      setEditedTitle("");
-      setEditedDesc("");
       props.handleClick(event);
     } catch (error) {
       console.log(error);
@@ -41,22 +42,24 @@ function EditTask(props) {
             className="w-full flex justify-between items-center"
           >
             <input
+              ref={titleRef}
               onClick={(event) => event.stopPropagation()}
               type="text"
               name="title"
-              value={editedTitle}
-              onChange={(event) => setEditedTitle(event.target.value)}
+              // value={editedTitle}
+              // onChange={(event) => setEditedTitle(event.target.value)}
               placeholder="Title"
               className="w-1/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
 
             <input
+              ref={descRef}
               onClick={(event) => event.stopPropagation()}
               type="text"
               name="description"
-              value={editedDesc}
-              onChange={(event) => setEditedDesc(event.target.value)}
+              // value={editedDesc}
+              // onChange={(event) => setEditedDesc(event.target.value)}
               placeholder="Description"
               className="w-1/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
